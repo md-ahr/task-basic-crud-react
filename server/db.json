@@ -1,0 +1,18 @@
+{
+    "sectors": {
+        "manufacturing": {
+            "level1": "Construction materials",
+            "level2": "Electronics and Optics",
+            "Food and Beverage": [
+                "Bakery & confectionery products",
+                "Beverages",
+                "Fish & fish products",
+                "Meat & meat products",
+                "Milk & dairy products",
+                "Other",
+                "Sweets & snack food"
+            ],
+            "Furniture": []
+        }
+    }
+}
