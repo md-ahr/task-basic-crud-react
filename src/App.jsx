@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="w-full h-screen grid content-center justify-center">
+    <div className="w-full mt-8 sm:mt-0 sm:h-screen grid content-center justify-center">
       <div className="px-8 py-6 mx-4 f-full sm:w-96 bg-white shadow rounded">
         <p className="text-sm text-slate-600 font-medium">
           <span className="mr-1 text-red-500">*</span>
