@@ -1,6 +1,7 @@
 {
   "name": "tasks",
   "private": true,
+  "proxy": "http://localhost:9000",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
