@@ -414,22 +414,22 @@
   ],
   "data": [
     {
-      "name": "asd asdsad",
-      "sectors": [
-        "5",
-        "10"
-      ],
-      "isAgree": true,
+      "name": "",
+      "sectors": [],
+      "isAgree": false,
       "id": 1
     },
     {
-      "name": "asdxasd",
-      "sectors": [
-        "2",
-        "8"
-      ],
-      "isAgree": true,
+      "name": "asdsad",
+      "sectors": [],
+      "isAgree": false,
       "id": 2
+    },
+    {
+      "name": "asdasdasd",
+      "sectors": [],
+      "isAgree": false,
+      "id": 3
     }
   ]
 }
