@@ -1,11 +1,17 @@
 const jsonServer = require("json-server");
 
 const server = jsonServer.create();
-const router = jsonServer.router("db.json");
-const port = process.env.PORT || 9000;
 
-server.db = router.db;
+const router = jsonServer.router("db.json");
+
+const middlewares = jsonServer.defaults();
+
+server.use(middlewares);
 
 server.use(router);
 
-server.listen(port);
+const port = process.env.PORT || 9000;
+
+server.listen(port, () => {
+    console.log(`JSON Server is running on port ${port}`);
+});
