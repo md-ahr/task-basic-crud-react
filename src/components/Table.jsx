@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
+import toast from "react-hot-toast";
 import { AppContext } from "../context/context";
 
 const Table = () => {
@@ -18,6 +19,20 @@ const Table = () => {
     dispatch({ type: 'EDIT_DATA', payload: id });
   };
 
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    try {
+      const res = await axios.delete(`http://127.0.0.1:9000/data/${id}`);
+      if (res.status === 200) {
+        dispatch({ type: 'DELETE_DATA', payload: id });
+        toast.success("Data deleted successfully!");
+      }
+    } catch (error) {
+      toast.error("Data deletion failed!");
+    }
+
+  };
+
   return (
     <div className="mt-8 mx-auto w-full sm:w-[600px] overflow-x-auto shadow-md sm:rounded-lg">
       {state && state.data && state.data.length > 0 && (
@@ -30,9 +45,9 @@ const Table = () => {
               <th scope="col" className="px-6 py-3">
                 Name
               </th>
-              {/* <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 Sectors
-              </th> */}
+              </th>
               <th scope="col" className="px-6 py-3">
                 Action
               </th>
@@ -43,7 +58,7 @@ const Table = () => {
               <tr key={item.id} className="bg-white border-b">
                 <td className="px-6 py-4">{item.id}</td>
                 <td className="px-6 py-4">{item.name}</td>
-                {/* <td className="px-6 py-4">{item.sectors.join(', ')}</td> */}
+                <td className="px-6 py-4">{item.sectors.join(', ')}</td>
                 <td className="px-6 py-4">
                   <a
                     href="#"
@@ -51,6 +66,12 @@ const Table = () => {
                     onClick={(e) => handleEdit(e, item.id)}
                   >
                     Edit
+                  </a>
+                  <a href="#"
+                    className="ml-4 font-medium text-red-600 hover:underline"
+                    onClick={(e) => handleDelete(e, item.id)}
+                  >
+                    Delete
                   </a>
                 </td>
               </tr>

@@ -414,22 +414,14 @@
   ],
   "data": [
     {
-      "name": "",
-      "sectors": [],
-      "isAgree": false,
-      "id": 1
-    },
-    {
       "name": "asdsad",
-      "sectors": [],
-      "isAgree": false,
-      "id": 2
-    },
-    {
-      "name": "asdasdasd",
-      "sectors": [],
-      "isAgree": false,
-      "id": 3
+      "sectors": [
+        "Electronics and optics",
+        "Beverages",
+        "Milk & dairy products"
+      ],
+      "isAgree": true,
+      "id": 1
     }
   ]
 }

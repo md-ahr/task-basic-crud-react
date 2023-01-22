@@ -18,7 +18,7 @@ export const AppReducer = (state, action) => {
                 editId: action.payload,
             };
         case "UPDATE_DATA":
-            const newData = state.data.map((item) => {
+            const updatedData = state.data.map((item) => {
                 if (item.id === action.payload.id) {
                     return {
                         ...item,
@@ -30,12 +30,16 @@ export const AppReducer = (state, action) => {
                     return item;
                 }
             });
-            console.log(newData);
             return {
                 ...state,
-                data: newData,
+                data: updatedData,
                 isEdit: false,
                 editId: null,
+            };
+        case 'DELETE_DATA':
+            return {
+                ...state,
+                data: state.data.filter(item => item.id !== action.payload),
             };
         default:
             return state;

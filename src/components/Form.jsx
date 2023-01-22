@@ -27,6 +27,7 @@ const Form = () => {
     e.preventDefault();
     try {
       if (data.name && data.sectors.length && data.isAgree) {
+        console.log(data);
         const res = await axios.post('http://127.0.0.1:9000/data', data);
         if (res.status === 201) {
           dispatch({ type: 'ADD_DATA', payload: res.data });
@@ -43,8 +44,12 @@ const Form = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    const body = {
+      name: data.name || state?.data[state?.editId - 1]?.name,
+      sectors: data.sectors.length > 1 ? data.sectors : state?.data[state?.editId - 1]?.sectors,
+    };
     try {
-      const res = await axios.put(`http://127.0.0.1:9000/data/${state?.editId}`, data);
+      const res = await axios.put(`http://127.0.0.1:9000/data/${state?.editId}`, body);
       if (res.status === 200) {
         dispatch({ type: 'UPDATE_DATA', payload: res.data });
         toast.success("Data updated successfully!");
@@ -94,7 +99,7 @@ const Form = () => {
               className="px-3 py-2 w-full text-sm border border-slate-400 rounded"
               multiple
               defaultValue={state?.data[state?.editId - 1]?.sectors}
-              onChange={(e) => setData({...data, sectors: Array.from(e.target.selectedOptions, option => option.value)})}
+              onChange={(e) => setData({...data, sectors: Array.from(e.target.selectedOptions, option => option.innerText)})}
             >
               <SectorList sectorList={sectorList} />
             </select>
@@ -155,7 +160,7 @@ const Form = () => {
               className="px-3 py-2 w-full text-sm border border-slate-400 rounded"
               multiple
               defaultValue={data?.sectors}
-              onChange={(e) => setData({...data, sectors: Array.from(e.target.selectedOptions, option => option.value)})}
+              onChange={(e) => setData({...data, sectors: Array.from(e.target.selectedOptions, option => option.innerText)})}
             >
               <SectorList sectorList={sectorList} />
             </select>
