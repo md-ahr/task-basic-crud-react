@@ -22,7 +22,7 @@ const Table = () => {
   const handleDelete = async (e, id) => {
     e.preventDefault();
     try {
-      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/data?id=${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/data/${id}`);
       if (res.status === 200) {
         dispatch({ type: 'DELETE_DATA', payload: id });
         toast.success("Data deleted successfully!");
