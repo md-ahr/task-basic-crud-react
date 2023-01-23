@@ -27,7 +27,6 @@ const Form = () => {
     e.preventDefault();
     try {
       if (data.name && data.sectors.length && data.isAgree) {
-        console.log(data);
         const res = await axios.post(`${import.meta.env.VITE_API_URL}/data`, data);
         if (res.status === 201) {
           dispatch({ type: 'ADD_DATA', payload: res.data });
