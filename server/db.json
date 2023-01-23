@@ -414,13 +414,12 @@
   ],
   "data": [
     {
-      "name": "asdsad",
+      "name": "NM",
       "sectors": [
         "Electronics and optics",
         "Beverages",
         "Milk & dairy products"
       ],
-      "isAgree": true,
       "id": 1
     }
   ]

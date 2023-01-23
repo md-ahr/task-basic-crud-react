@@ -8,7 +8,7 @@ const Table = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await axios.get('http://127.0.0.1:9000/data');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/data`);
       dispatch({ type: 'GET_DATA', payload: res.data });
     }
     !state?.data?.isEdit && getData();
@@ -22,7 +22,7 @@ const Table = () => {
   const handleDelete = async (e, id) => {
     e.preventDefault();
     try {
-      const res = await axios.delete(`http://127.0.0.1:9000/data/${id}`);
+      const res = await axios.delete(`${import.meta.env.VITE_API_URL}/data/${id}`);
       if (res.status === 200) {
         dispatch({ type: 'DELETE_DATA', payload: id });
         toast.success("Data deleted successfully!");

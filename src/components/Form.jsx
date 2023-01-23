@@ -17,7 +17,7 @@ const Form = () => {
 
   useEffect(() => {
     async function getData() {
-      const res = await axios.get('http://127.0.0.1:9000/sectors');
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/sectors`);
       setSectorList(res.data);
     }
     getData();
@@ -28,7 +28,7 @@ const Form = () => {
     try {
       if (data.name && data.sectors.length && data.isAgree) {
         console.log(data);
-        const res = await axios.post('http://127.0.0.1:9000/data', data);
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/data`, data);
         if (res.status === 201) {
           dispatch({ type: 'ADD_DATA', payload: res.data });
           toast.success("Data saved successfully!");
@@ -49,7 +49,7 @@ const Form = () => {
       sectors: data.sectors.length > 1 ? data.sectors : state?.data[state?.editId - 1]?.sectors,
     };
     try {
-      const res = await axios.put(`http://127.0.0.1:9000/data/${state?.editId}`, body);
+      const res = await axios.put(`${import.meta.env.VITE_API_URL}/data/${state?.editId}`, body);
       if (res.status === 200) {
         dispatch({ type: 'UPDATE_DATA', payload: res.data });
         toast.success("Data updated successfully!");
